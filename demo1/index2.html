@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <!-- 使用{{}}和v-model+methods函数实现拼串的效果。 -->
+    <!-- 总结：
+        只要data中的数据发生改变，vue就一定会重新解析模板（view） -->
+</head>
+<body>
+
+    <div id="root">
+        <div class="firstName">
+            姓：<input type="text" v-model="first">
+        </div>
+        <div class="lastName">
+            名：<input type="text" v-model="last">
+        </div>
+        <div class="Name">
+            全名：{{getName()}}
+        </div>
+    </div>
+  
+    <script src="../vue.js"></script>
+    <script>
+        Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示。
+
+        new Vue({
+            el:"#root",
+            data:{
+                first:"张",
+                last:"三",
+            },
+            methods: {
+                getName() {  
+                    let fullName = this.first + '-' + this.last;
+                    return fullName;
+                }
+            },
+        })
+
+        
+
+    </script>
+    
+</body>
+</html>
